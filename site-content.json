@@ -25,7 +25,8 @@
   "hero": {
     "headline": "Immaculata High School",
     "subheadline": "Where Faith, Scholarship, Service, and Friendship Unite",
-    "backgroundImage": "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "backgroundImage": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/School%20Exterior%202.jpg",
+    "logoImage": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Templates/Resources/IHS%20Seal.png",
     "ctaButtons": [
       {"text": "Apply Now", "href": "#admissions", "primary": true},
       {"text": "Schedule a Visit", "href": "#contact"},
@@ -45,42 +46,42 @@
       "date": "February 17, 2026",
       "summary": "Senior Taylor Thiele makes history with back-to-back championship wins, leading the Spartans wrestling program to new heights.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-16-26%20v2.png"
     },
     {
       "title": "Mrs. Kristin Camiolo Receives Prestigious Lux Dei Award",
       "date": "February 10, 2026",
       "summary": "Mathematics teacher Mrs. Camiolo honored for her outstanding dedication to Catholic education and student excellence.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-9.png"
     },
     {
       "title": "Football Program Welcomes New Leadership for 2026",
       "date": "February 5, 2026",
       "summary": "Jeff Vanderbeek and Dallas Whitaker step into leadership roles, bringing fresh energy to Spartan football.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/IMG_6255.png"
     },
     {
       "title": "Jack Cust Jr. Inducted into NJSIAA Hall of Fame 2026",
       "date": "January 28, 2026",
       "summary": "Former Spartan standout receives highest honor in New Jersey high school athletics.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Athletics/Teams/Baseball/Jack%20Cust%20Jr..png"
     },
     {
       "title": "Wrestling Team Captures Somerset County Title",
       "date": "January 19, 2026",
       "summary": "Historic victory as Spartans wrestling makes county championship history with dominant performance.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-19.png"
     },
     {
       "title": "Cheer Squad Wins Garden State Challenge Division Championship",
       "date": "January 12, 2026",
       "summary": "Spartan cheerleaders bring home gold with spectacular performance at state competition.",
       "link": "#",
-      "image": "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-12.png"
     }
   ],
   "academics": {
@@ -209,6 +210,34 @@
     "instagram": "https://instagram.com/immaculatahighschool",
     "twitter": "https://twitter.com/immaculatanj"
   },
+  "collegeAffiliations": [
+    {"name": "Princeton", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/princeton1.jpg"},
+    {"name": "Columbia", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/Columbia.png"},
+    {"name": "Cornell", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/Cornell.png"},
+    {"name": "Georgetown", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/Georgetown.png"},
+    {"name": "Notre Dame", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/notredame.png"},
+    {"name": "Villanova", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/villanova1.jpg"},
+    {"name": "NYU", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/nyu.png"},
+    {"name": "Rutgers", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/rutgers.png"},
+    {"name": "Penn State", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/pennstate.png"},
+    {"name": "UC Berkeley", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/ucberkeley.png"},
+    {"name": "Carnegie Mellon", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/CarnegieMellon.png"},
+    {"name": "Seton Hall", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/setonhall.png"},
+    {"name": "Lehigh", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/lehigh.png"},
+    {"name": "Fordham", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/fordham.png"},
+    {"name": "Syracuse", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/syracuse.png"},
+    {"name": "UCLA", "logo": "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/ucla.png"}
+  ],
+  "galleryImages": [
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/01_Service.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/03_Baseball.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/04_Musical_Ensembles.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/22-23/Fast_Facts_Slides_05_Retreats.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/12_Marching_Band.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/24-25/Fast_Facts_Slides_08_Theater.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/2020_2021/Graduation2021a.jpg",
+    "https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/Fall%202019/Chapel%20Photo.JPG"
+  ],
   "contact": {
     "hours": "Monday - Friday: 7:30 AM - 3:30 PM",
     "principalMessage": "Welcome to Immaculata High School, where we are committed to developing the whole person - mind, body, and spirit. Our dedicated faculty and staff work tirelessly to provide an environment where students can grow academically, spiritually, and socially.",
