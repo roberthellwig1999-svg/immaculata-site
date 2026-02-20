@@ -8,17 +8,28 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
         :root {
-            --primary-navy: #0f2044;
-            --secondary-slate: #1e3a6e;
-            --accent-gold: #b8860b;
-            --bg-off-white: #fafaf7;
-            --text-charcoal: #2d3436;
-            --text-gray: #636e72;
-            --white: #ffffff;
+            --primary-navy: #0a1628;
+            --secondary-navy: #142744;
+            --accent-gold: #c9a84c;
+            --accent-gold-light: #dfc477;
+            --accent-gold-dark: #a68a3a;
+            --bg-cream: #f8f6f1;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-body: #4a4a5a;
+            --text-light: #7a7a8a;
+            --border-light: #e8e6e1;
+            --shadow-sm: 0 2px 8px rgba(10, 22, 40, 0.06);
+            --shadow-md: 0 8px 30px rgba(10, 22, 40, 0.08);
+            --shadow-lg: 0 20px 60px rgba(10, 22, 40, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
 
         * {
@@ -29,13 +40,16 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Source Sans 3', sans-serif;
-            line-height: 1.6;
-            color: var(--text-charcoal);
-            background-color: var(--bg-off-white);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-body);
+            background-color: var(--bg-cream);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -44,27 +58,28 @@
             padding: 0 2rem;
         }
 
-        /* NAVIGATION */
+        /* ── NAVIGATION ── */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: all 0.3s ease;
-            background-color: rgba(15, 32, 68, 0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
         }
 
         nav.scrolled {
-            background-color: rgba(15, 32, 68, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(15, 32, 68, 0.1);
+            background: rgba(10, 22, 40, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(201, 168, 76, 0.15);
         }
 
         .nav-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 2rem;
+            padding: 1.1rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -72,106 +87,145 @@
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            color: var(--white);
+            gap: 0.85rem;
+            color: var(--bg-white);
             text-decoration: none;
         }
 
         .nav-logo {
-            width: 50px;
-            height: 50px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
-            background: var(--white);
-            padding: 5px;
+            background: var(--bg-white);
+            padding: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
         .nav-text h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
         }
 
         .nav-text p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin: 0;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 0.25rem;
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--bg-white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            background: rgba(255,255,255,0.1);
+            color: var(--accent-gold-light);
         }
 
         .apply-btn {
-            background: linear-gradient(45deg, var(--accent-gold), #d4af37);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            padding: 0.65rem 1.5rem;
             border: none;
-            border-radius: 25px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            transition: all 0.25s ease;
         }
 
         .apply-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
+            background: var(--accent-gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
         }
 
         .mobile-menu {
             display: none;
             background: none;
             border: none;
-            color: var(--white);
+            color: var(--bg-white);
             font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+
+        .mobile-nav-overlay a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            padding: 0.75rem 2rem;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-overlay a:hover {
+            color: var(--accent-gold);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 2rem;
             cursor: pointer;
         }
 
-        /* HERO SECTION */
+        /* ── HERO ── */
         .hero {
             height: 100vh;
             min-height: 700px;
-            background: linear-gradient(170deg, rgba(15, 32, 68, 0.75) 0%, rgba(30, 58, 110, 0.55) 50%, rgba(15, 32, 68, 0.8) 100%), 
+            background: linear-gradient(175deg, rgba(10, 22, 40, 0.82) 0%, rgba(20, 39, 68, 0.6) 45%, rgba(10, 22, 40, 0.85) 100%), 
                         url('https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/School%20Exterior%202.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: var(--bg-white);
             position: relative;
+            overflow: hidden;
         }
 
         .hero::after {
@@ -180,234 +234,264 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 150px;
-            background: linear-gradient(transparent, var(--bg-off-white));
+            height: 180px;
+            background: linear-gradient(transparent, var(--bg-cream));
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
         }
 
         .hero-seal {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            padding: 12px;
-            margin: 0 auto 2rem;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.12);
+            padding: 10px;
+            margin: 0 auto 2.5rem;
+            backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(255,255,255,0.2);
             opacity: 0;
-            animation: slideUp 1s ease 0.3s forwards;
+            animation: fadeIn 0.8s ease 0.3s forwards;
         }
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 700;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
             margin-bottom: 1rem;
             opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease 0.5s forwards;
-            text-shadow: 0 2px 40px rgba(0,0,0,0.3);
-            letter-spacing: -0.5px;
+            animation: slideUp 0.8s ease 0.5s forwards;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1rem;
+            font-weight: 500;
             margin-bottom: 0.75rem;
             opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease 0.7s forwards;
-            letter-spacing: 4px;
+            animation: slideUp 0.8s ease 0.65s forwards;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
+            color: var(--accent-gold-light);
         }
 
         .hero-tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 2.5rem;
             opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease 0.8s forwards;
-            color: rgba(255,255,255,0.85);
+            animation: slideUp 0.8s ease 0.75s forwards;
+            color: rgba(255,255,255,0.75);
+            font-weight: 400;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
             opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease 0.9s forwards;
+            animation: slideUp 0.8s ease 0.85s forwards;
         }
 
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 30px;
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
             border: 2px solid transparent;
+            letter-spacing: 0.02em;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, var(--accent-gold), #d4af37);
-            color: var(--white);
-            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 12px 35px rgba(184, 134, 11, 0.4);
+            color: var(--bg-white);
+            border: 1.5px solid rgba(255,255,255,0.4);
         }
 
         .btn-secondary:hover {
-            background: var(--white);
+            background: var(--bg-white);
             color: var(--primary-navy);
+            border-color: var(--bg-white);
         }
 
-        /* SECTIONS */
+        /* ── SECTIONS ── */
         .section {
             padding: 6rem 0;
         }
 
         .section.bg-navy {
             background: var(--primary-navy);
-            color: var(--white);
+            color: var(--bg-white);
         }
 
         .section.bg-slate {
-            background: linear-gradient(135deg, var(--secondary-slate), #152d5a);
-            color: var(--white);
+            background: var(--secondary-navy);
+            color: var(--bg-white);
         }
 
-        .section.bg-slate .card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .section.bg-slate .card h3 {
-            color: var(--white);
-        }
-
-        .section.bg-slate .card p {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .section.bg-slate .card-date {
-            color: var(--accent-gold);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-gold), #d4af37);
-            margin: 1.5rem auto 2rem;
-            border-radius: 2px;
-        }
-
-        .section.bg-navy .section-title::after,
-        .section.bg-slate .section-title::after {
-            background: linear-gradient(90deg, var(--accent-gold), #d4af37);
-        }
-
-        .section-title.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
+        .section-header {
             text-align: center;
             margin-bottom: 4rem;
-            color: var(--text-gray);
-            max-width: 600px;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* MISSION */
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .section.bg-navy .section-title,
+        .section.bg-slate .section-title {
+            color: var(--bg-white);
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 0 auto 1.5rem;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        .section.bg-navy .section-desc,
+        .section.bg-slate .section-desc {
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* ── PILLARS ── */
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .pillar-card {
-            background: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 20px;
+            background: var(--bg-white);
+            padding: 2.5rem 1.75rem;
+            border-radius: var(--radius-md);
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
-            border-top: 4px solid var(--accent-gold);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
         }
 
         .pillar-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .pillar-icon {
-            font-size: 2.5rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
-            color: var(--white);
-            width: 70px;
-            height: 70px;
-            line-height: 70px;
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-slate));
-            display: inline-block;
-            box-shadow: 0 8px 25px rgba(15, 32, 68, 0.3);
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
+            color: var(--accent-gold-light);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Announcement bar */
+        .announcement-bar {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .announcement-bar a {
+            color: var(--primary-navy);
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .pillar-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-navy);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        /* STATS BAR */
+        .pillar-card p {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--text-body);
+        }
+
+        /* ── STATS ── */
         .stats-bar {
             background: var(--primary-navy);
-            color: var(--white);
-            padding: 3rem 0;
+            padding: 3.5rem 0;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
         }
 
         .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
         }
 
@@ -417,322 +501,527 @@
 
         .stat-number {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 700;
             color: var(--accent-gold);
             display: block;
+            line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.7);
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.25rem;
         }
 
-        /* CARDS */
+        /* ── CARDS ── */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .card {
-            background: var(--white);
-            border-radius: 20px;
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-image-wrap {
+            overflow: hidden;
+            height: 200px;
         }
 
         .card-image {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
         .card:hover .card-image {
-            transform: scale(1.05);
-        }
-
-        .card {
-            overflow: hidden;
+            transform: scale(1.04);
         }
 
         .card-content {
-            padding: 2rem;
+            padding: 1.75rem;
         }
 
         .card-date {
-            color: var(--text-gray);
-            font-size: 0.85rem;
+            color: var(--accent-gold-dark);
+            font-size: 0.8rem;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary-navy);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+            font-weight: 600;
         }
 
-        /* NEWS GRID */
+        .card p {
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* Dark section cards */
+        .section.bg-slate .card,
+        .section.bg-navy .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .section.bg-slate .card:hover,
+        .section.bg-navy .card:hover {
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .section.bg-slate .card h3,
+        .section.bg-navy .card h3 {
+            color: var(--bg-white);
+        }
+
+        .section.bg-slate .card p,
+        .section.bg-navy .card p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .section.bg-slate .card-date,
+        .section.bg-navy .card-date {
+            color: var(--accent-gold-light);
+        }
+
+        /* ── NEWS GRID ── */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
-        /* SPORTS GRID */
+        /* ── SPORTS ── */
         .sports-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
         }
 
         .sport-card {
-            background: var(--white);
-            padding: 2rem 1.5rem;
-            border-radius: 15px;
+            background: rgba(255,255,255,0.04);
+            padding: 1.25rem 1rem;
+            border-radius: var(--radius-sm);
             text-align: center;
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--accent-gold);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
         .sport-card:hover {
-            transform: translateY(-5px);
-            background: var(--bg-off-white);
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
         }
 
         .sport-season {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--accent-gold);
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.12em;
         }
 
         .sport-name {
             font-weight: 600;
-            color: var(--primary-navy);
+            color: var(--bg-white);
+            font-size: 0.88rem;
         }
 
-        /* COLLEGE LOGOS */
+        /* ── COLLEGE LOGOS ── */
         .colleges-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
             align-items: center;
+        }
+
+        .college-logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.2s ease;
+            aspect-ratio: 1;
+        }
+
+        .college-logo-wrap:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.05);
         }
 
         .college-logo {
             width: 100%;
-            max-width: 120px;
+            max-width: 80px;
             height: auto;
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            opacity: 0.75;
+            transition: opacity 0.2s ease;
             filter: brightness(0) invert(1);
-            margin: 0 auto;
-            display: block;
         }
 
-        .college-logo:hover {
+        .college-logo-wrap:hover .college-logo {
             opacity: 1;
-            transform: scale(1.1);
         }
 
-        /* GALLERY */
+        /* ── GALLERY ── */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            height: 250px;
+            border-radius: var(--radius-md);
+            height: 260px;
+            cursor: pointer;
         }
 
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .gallery-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(15, 32, 68, 0.8));
-            color: var(--white);
-            padding: 2rem 1.5rem 1.5rem;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10, 22, 40, 0.85) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: var(--bg-white);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .gallery-item:hover .gallery-image {
-            transform: scale(1.1);
+            transform: scale(1.06);
         }
 
         .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
+            opacity: 1;
         }
 
-        /* FORM */
+        .gallery-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 0.75rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .testimonial-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-card .attribution {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        /* ── FORM ── */
+        .inquiry-form-wrap {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .inquiry-form-wrap h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-navy);
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.88rem;
+            color: var(--text-dark);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s ease;
+            background: var(--bg-cream);
+            color: var(--text-dark);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-gold);
+            background: var(--bg-white);
         }
 
         .form-group textarea {
-            height: 120px;
+            height: 110px;
             resize: vertical;
         }
 
-        /* CONTACT */
+        .form-submit {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .form-submit .btn {
+            min-width: 200px;
+            cursor: pointer;
+        }
+
+        /* ── CONTACT ── */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
+            gap: 3rem;
         }
 
         .contact-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1.5rem;
-            color: var(--primary-navy);
+            color: var(--text-dark);
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .contact-icon {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--accent-gold);
-            margin-top: 0.2rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-item div {
+            font-size: 0.92rem;
+            line-height: 1.6;
         }
 
         .map-container {
-            width: 100%;
-            height: 300px;
-            border-radius: 15px;
+            border-radius: var(--radius-md);
             overflow: hidden;
+            height: 100%;
+            min-height: 300px;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* FOOTER */
+        /* ── FOOTER ── */
         footer {
             background: var(--primary-navy);
-            color: var(--white);
+            color: var(--bg-white);
             padding: 4rem 0 2rem;
+            border-top: 2px solid var(--accent-gold);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .footer-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
         }
 
         .footer-logo {
-            width: 60px;
-            height: 60px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: var(--white);
-            padding: 8px;
+            background: var(--bg-white);
+            padding: 6px;
+        }
+
+        .footer-brand-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .footer-brand-text p {
+            font-size: 0.78rem;
+            opacity: 0.65;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-about {
+            font-size: 0.88rem;
+            opacity: 0.7;
+            line-height: 1.7;
         }
 
         .footer-links h4 {
             font-family: 'Playfair Display', serif;
+            font-size: 1rem;
             margin-bottom: 1rem;
             color: var(--accent-gold);
+            font-weight: 600;
         }
 
         .footer-links ul {
             list-style: none;
         }
 
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
         .footer-links a {
-            color: var(--white);
+            color: var(--bg-white);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            opacity: 0.65;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
         }
 
         .footer-links a:hover {
             opacity: 1;
-            color: var(--accent-gold);
+            color: var(--accent-gold-light);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.5rem;
             text-align: center;
-            opacity: 0.7;
+            font-size: 0.82rem;
+            opacity: 0.5;
         }
 
-        /* ANIMATIONS */
+        .footer-bottom a {
+            color: var(--accent-gold-light);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── ANIMATIONS ── */
         @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .animate-on-scroll.animate {
@@ -740,61 +1029,56 @@
             transform: translateY(0);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-seal {
-                width: 80px;
-                height: 80px;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+            .sports-grid { grid-template-columns: repeat(3, 1fr); }
+            .colleges-grid { grid-template-columns: repeat(4, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
         }
 
-        /* UTILITY CLASSES */
-        .text-center { text-align: center; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-4 { margin-bottom: 2rem; }
-        .mt-4 { margin-top: 2rem; }
+        @media (max-width: 768px) {
+            .nav-links, .apply-btn { display: none; }
+            .mobile-menu { display: block; }
+
+            .hero { min-height: 600px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 0.85rem; letter-spacing: 0.25em; }
+            .hero-tagline { font-size: 1rem; }
+
+            .section { padding: 4rem 0; }
+            .container { padding: 0 1.25rem; }
+
+            .pillars-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .sports-grid { grid-template-columns: repeat(2, 1fr); }
+            .colleges-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .stats-container { grid-template-columns: repeat(3, 1fr); }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .pillars-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .sports-grid { grid-template-columns: repeat(2, 1fr); }
+            .colleges-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        📣 Now Accepting Applications for the Class of 2030 — <a href="#admissions">Apply Today</a>
+    </div>
+
     <!-- NAVIGATION -->
     <nav id="navbar">
         <div class="nav-content">
@@ -817,17 +1101,29 @@
             </ul>
             
             <a href="#admissions" class="apply-btn">Apply Now</a>
-            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" onclick="document.querySelector('.mobile-nav-overlay').classList.add('active')">☰</button>
         </div>
     </nav>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-overlay">
+        <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+        <a href="#home" onclick="this.parentElement.classList.remove('active')">Home</a>
+        <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+        <a href="#academics" onclick="this.parentElement.classList.remove('active')">Academics</a>
+        <a href="#admissions" onclick="this.parentElement.classList.remove('active')">Admissions</a>
+        <a href="#athletics" onclick="this.parentElement.classList.remove('active')">Athletics</a>
+        <a href="#news" onclick="this.parentElement.classList.remove('active')">News</a>
+        <a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+    </div>
 
     <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-content">
             <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Templates/Resources/IHS%20Seal.png" alt="Immaculata Seal" class="hero-seal">
-            <h1>Immaculata High School</h1>
             <p class="hero-subtitle">Faith · Scholarship · Service · Friendship</p>
-            <p class="hero-tagline">"Educating the whole person — mind, body, and spirit since 1962"</p>
+            <h1>Immaculata High School</h1>
+            <p class="hero-tagline">Educating the whole person — mind, body, and spirit since 1962</p>
             <div class="hero-buttons">
                 <a href="#about" class="btn btn-primary">Explore Our Campus</a>
                 <a href="#admissions" class="btn btn-secondary">Apply Now →</a>
@@ -835,40 +1131,44 @@
         </div>
     </section>
 
-    <!-- MISSION/ABOUT -->
+    <!-- ABOUT / MISSION -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Welcome to Immaculata</h2>
-            <div class="section-subtitle">
-                Founded by Msgr. Eugene B. Kelly, Immaculata High School has been educating the whole person — mind, body, and spirit — since 1962. We are committed to developing divergent thinkers and empathetic leaders who will make a positive impact in their communities and beyond.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Our Mission</span>
+                <h2 class="section-title">Welcome to Immaculata</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Founded by Msgr. Eugene B. Kelly, Immaculata High School has been educating the whole person — mind, body, and spirit — since 1962. We develop divergent thinkers and empathetic leaders who make a positive impact in their communities and beyond.
+                </p>
             </div>
             
             <div class="pillars-grid animate-on-scroll">
                 <div class="pillar-card">
-                    <div class="pillar-icon">✝</div>
+                    <div class="pillar-icon"><i class="fas fa-cross"></i></div>
                     <h3>Faith</h3>
                     <p>Grounding our community in Catholic values and spiritual growth, fostering a deep relationship with God through prayer, service, and sacramental life.</p>
                 </div>
                 <div class="pillar-card">
-                    <div class="pillar-icon">📚</div>
+                    <div class="pillar-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Scholarship</h3>
                     <p>Pursuing academic excellence through rigorous coursework, critical thinking, and intellectual curiosity that prepares students for lifelong learning.</p>
                 </div>
                 <div class="pillar-card">
-                    <div class="pillar-icon">🤝</div>
+                    <div class="pillar-icon"><i class="fas fa-hands-helping"></i></div>
                     <h3>Service</h3>
-                    <p>Encouraging students to serve others with compassion and generosity, following Christ's example of love and self-sacrifice in our local and global communities.</p>
+                    <p>Encouraging students to serve others with compassion and generosity, following Christ's example of love and self-sacrifice.</p>
                 </div>
                 <div class="pillar-card">
-                    <div class="pillar-icon">💙</div>
+                    <div class="pillar-icon"><i class="fas fa-heart"></i></div>
                     <h3>Friendship</h3>
-                    <p>Building lasting relationships within our Spartan family, creating bonds that support personal growth and lasting connections throughout life.</p>
+                    <p>Building lasting relationships within our Spartan family, creating bonds that support personal growth and connections throughout life.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STATS BAR -->
+    <!-- STATS -->
     <section class="stats-bar">
         <div class="container">
             <div class="stats-container">
@@ -877,20 +1177,20 @@
                     <span class="stat-label">Founded</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="18">0</span>
+                    <span class="stat-number" data-target="18" data-suffix="+">0</span>
                     <span class="stat-label">AP Courses</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="15">0</span>
-                    <span class="stat-label">Sports</span>
+                    <span class="stat-label">Varsity Sports</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="25">0</span>
-                    <span class="stat-label">Clubs</span>
+                    <span class="stat-number" data-target="25" data-suffix="+">0</span>
+                    <span class="stat-label">Clubs & Activities</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="100">0</span>
-                    <span class="stat-label">% College Acceptance</span>
+                    <span class="stat-number" data-target="100" data-suffix="%">0</span>
+                    <span class="stat-label">College Acceptance</span>
                 </div>
             </div>
         </div>
@@ -899,9 +1199,13 @@
     <!-- ACADEMICS -->
     <section id="academics" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Academic Excellence</h2>
-            <div class="section-subtitle">
-                Under the leadership of Mrs. Kristin Boczany, Vice Principal of Academic Affairs, our rigorous curriculum prepares students for success in college and beyond through Advanced Placement, Honors, and College Preparatory courses.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Academics</span>
+                <h2 class="section-title">Academic Excellence</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Under the leadership of Mrs. Kristin Boczany, Vice Principal of Academic Affairs, our rigorous curriculum prepares students for success in college and beyond through Advanced Placement, Honors, and College Preparatory courses.
+                </p>
             </div>
             
             <div class="cards-grid animate-on-scroll">
@@ -914,13 +1218,13 @@
                 <div class="card">
                     <div class="card-content">
                         <h3>Honors Program</h3>
-                        <p>Accelerated coursework for high-achieving students, fostering critical thinking, research skills, and intellectual curiosity through challenging curriculum and independent study opportunities.</p>
+                        <p>Accelerated coursework for high-achieving students, fostering critical thinking, research skills, and intellectual curiosity through challenging curriculum and independent study.</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
                         <h3>Technology Integration</h3>
-                        <p>Our 1:1 Chromebook program ensures every student has access to modern educational technology, preparing them for the digital demands of college and career success.</p>
+                        <p>Our 1:1 Chromebook program ensures every student has access to modern educational technology, preparing them for the digital demands of college and career.</p>
                     </div>
                 </div>
             </div>
@@ -930,60 +1234,76 @@
     <!-- NEWS -->
     <section id="news" class="section bg-slate">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Latest News</h2>
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">What's Happening</span>
+                <h2 class="section-title">Latest News</h2>
+                <div class="section-divider"></div>
+            </div>
             
             <div class="news-grid animate-on-scroll">
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-16-26%20v2.png" alt="Wrestling Championship" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-16-26%20v2.png" alt="Wrestling Championship" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">February 17, 2026</div>
                         <h3>Taylor Thiele Wins 2nd Skyland Conference Wrestling Championship</h3>
-                        <p>Congratulations to our outstanding wrestler Taylor Thiele for capturing his second consecutive Skyland Conference Wrestling Championship, continuing Immaculata's proud wrestling tradition.</p>
+                        <p>Congratulations to our outstanding wrestler Taylor Thiele for capturing his second consecutive Skyland Conference Wrestling Championship.</p>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-9.png" alt="Lux Dei Award" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-9.png" alt="Lux Dei Award" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">February 10, 2026</div>
                         <h3>Mrs. Kristin Camiolo Receives Lux Dei Award</h3>
-                        <p>We celebrate Mrs. Kristin Camiolo's recognition with the prestigious Lux Dei Award, honoring her outstanding dedication to Catholic education and her positive impact on our school community.</p>
+                        <p>We celebrate Mrs. Kristin Camiolo's recognition with the prestigious Lux Dei Award, honoring her outstanding dedication to Catholic education.</p>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/IMG_6255.png" alt="Football Leadership" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/IMG_6255.png" alt="Football Leadership" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">February 5, 2026</div>
                         <h3>New Football Leadership: Vanderbeek & Whitaker</h3>
-                        <p>Immaculata Football welcomes new leadership with coaches Vanderbeek and Whitaker, bringing fresh energy and expertise to continue our Spartan athletic excellence on the gridiron.</p>
+                        <p>Immaculata Football welcomes new leadership with coaches Vanderbeek and Whitaker, bringing fresh energy to Spartan athletics.</p>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Athletics/Teams/Baseball/Jack%20Cust%20Jr..png" alt="Jack Cust Jr" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Athletics/Teams/Baseball/Jack%20Cust%20Jr..png" alt="Jack Cust Jr" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">January 28, 2026</div>
                         <h3>Jack Cust Jr. Inducted into NJSIAA Hall of Fame</h3>
-                        <p>Immaculata alumnus and former MLB player Jack Cust Jr. was inducted into the New Jersey State Interscholastic Athletic Association Hall of Fame, representing our proud athletic legacy.</p>
+                        <p>Immaculata alumnus and former MLB player Jack Cust Jr. was inducted into the NJSIAA Hall of Fame, representing our proud athletic legacy.</p>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-19.png" alt="County Wrestling" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-19.png" alt="County Wrestling" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">January 19, 2026</div>
                         <h3>Wrestling Team Captures Somerset County Title</h3>
-                        <p>Our wrestling program continues its dominance with another Somerset County Championship, showcasing the dedication and skill of our Spartan wrestlers and coaching staff.</p>
+                        <p>Our wrestling program continues its dominance with another Somerset County Championship, showcasing Spartan dedication and skill.</p>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-12.png" alt="Cheer Champions" class="card-image">
+                    <div class="card-image-wrap">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-12.png" alt="Cheer Champions" class="card-image">
+                    </div>
                     <div class="card-content">
                         <div class="card-date">January 12, 2026</div>
-                        <h3>Cheerleading Wins Garden State Challenge Championships</h3>
-                        <p>Our cheerleading squad earned top honors at the Garden State Challenge Championships, demonstrating exceptional teamwork, skill, and Spartan pride through their outstanding performance.</p>
+                        <h3>Cheerleading Wins Garden State Challenge</h3>
+                        <p>Our cheerleading squad earned top honors at the Garden State Challenge Championships, demonstrating exceptional teamwork and Spartan pride.</p>
                     </div>
                 </div>
             </div>
@@ -993,34 +1313,33 @@
     <!-- ADMISSIONS -->
     <section id="admissions" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Join Our Community</h2>
-            <div class="section-subtitle">
-                Mrs. Michele Blandino, Director of Admissions, welcomes you to discover how Immaculata can help your child grow academically, spiritually, and personally.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Admissions</span>
+                <h2 class="section-title">Join Our Community</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Mrs. Michele Blandino, Director of Admissions, welcomes you to discover how Immaculata can help your child grow academically, spiritually, and personally.
+                </p>
             </div>
             
-            <div class="cards-grid animate-on-scroll">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>"A Home Away From Home"</h3>
-                        <p><em>"Immaculata isn't just a school—it's a family. The teachers know your name, your dreams, and they genuinely care about helping you achieve them. I've grown not just academically, but as a person."</em></p>
-                        <p><strong>— Sarah M., Class of 2025</strong></p>
-                    </div>
+            <div class="testimonials-grid animate-on-scroll">
+                <div class="testimonial-card">
+                    <h3>A Home Away From Home</h3>
+                    <p><em>"Immaculata isn't just a school — it's a family. The teachers know your name, your dreams, and they genuinely care about helping you achieve them. I've grown not just academically, but as a person."</em></p>
+                    <p class="attribution">— Sarah M., Class of 2025</p>
                 </div>
                 
-                <div class="card">
-                    <div class="card-content">
-                        <h3>"Excellence in Every Aspect"</h3>
-                        <p><em>"The combination of rigorous academics, strong athletics, and spiritual growth has prepared me for success at Georgetown. Immaculata taught me to think critically and serve others."</em></p>
-                        <p><strong>— Michael T., Class of 2024</strong></p>
-                    </div>
+                <div class="testimonial-card">
+                    <h3>Excellence in Every Aspect</h3>
+                    <p><em>"The combination of rigorous academics, strong athletics, and spiritual growth has prepared me for success at Georgetown. Immaculata taught me to think critically and serve others."</em></p>
+                    <p class="attribution">— Michael T., Class of 2024</p>
                 </div>
             </div>
 
-            <div style="background: var(--white); padding: 3rem; border-radius: 20px; margin-top: 3rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
-                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 2rem; color: var(--primary-navy); text-align: center;">Request Information</h3>
-                
+            <div class="inquiry-form-wrap animate-on-scroll">
+                <h3>Request Information</h3>
                 <form class="admission-form">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
                             <input type="text" id="firstName" name="firstName" required>
@@ -1046,7 +1365,7 @@
                         <textarea id="message" name="message" placeholder="What draws you to our community?"></textarea>
                     </div>
                     
-                    <div style="text-align: center;">
+                    <div class="form-submit">
                         <button type="submit" class="btn btn-primary">Send Inquiry</button>
                     </div>
                 </form>
@@ -1057,107 +1376,74 @@
     <!-- ATHLETICS -->
     <section id="athletics" class="section bg-navy">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Spartan Athletics</h2>
-            <div class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
-                Under the direction of Mr. Thomas Gambino, our athletic programs embody the founding vision of Msgr. Eugene B. Kelly: developing character, teamwork, and excellence through competition. Our Spartans compete with honor in the blue and white tradition.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Athletics</span>
+                <h2 class="section-title">Spartan Athletics</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Under the direction of Mr. Thomas Gambino, our athletic programs embody the founding vision of Msgr. Eugene B. Kelly: developing character, teamwork, and excellence through competition.
+                </p>
             </div>
             
             <div class="sports-grid animate-on-scroll">
-                <div class="sport-card">
-                    <div class="sport-season">Fall</div>
-                    <div class="sport-name">Football</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Fall</div>
-                    <div class="sport-name">Soccer (Boys)</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Fall</div>
-                    <div class="sport-name">Soccer (Girls)</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Fall</div>
-                    <div class="sport-name">Cross Country</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Fall</div>
-                    <div class="sport-name">Cheerleading</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Winter</div>
-                    <div class="sport-name">Basketball (Boys)</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Winter</div>
-                    <div class="sport-name">Basketball (Girls)</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Winter</div>
-                    <div class="sport-name">Wrestling</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Winter</div>
-                    <div class="sport-name">Swimming</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Winter</div>
-                    <div class="sport-name">Indoor Track</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Spring</div>
-                    <div class="sport-name">Baseball</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Spring</div>
-                    <div class="sport-name">Softball</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Spring</div>
-                    <div class="sport-name">Tennis</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Spring</div>
-                    <div class="sport-name">Track & Field</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-season">Spring</div>
-                    <div class="sport-name">Golf</div>
-                </div>
+                <div class="sport-card"><div class="sport-season">Fall</div><div class="sport-name">Football</div></div>
+                <div class="sport-card"><div class="sport-season">Fall</div><div class="sport-name">Soccer (Boys)</div></div>
+                <div class="sport-card"><div class="sport-season">Fall</div><div class="sport-name">Soccer (Girls)</div></div>
+                <div class="sport-card"><div class="sport-season">Fall</div><div class="sport-name">Cross Country</div></div>
+                <div class="sport-card"><div class="sport-season">Fall</div><div class="sport-name">Cheerleading</div></div>
+                <div class="sport-card"><div class="sport-season">Winter</div><div class="sport-name">Basketball (Boys)</div></div>
+                <div class="sport-card"><div class="sport-season">Winter</div><div class="sport-name">Basketball (Girls)</div></div>
+                <div class="sport-card"><div class="sport-season">Winter</div><div class="sport-name">Wrestling</div></div>
+                <div class="sport-card"><div class="sport-season">Winter</div><div class="sport-name">Swimming</div></div>
+                <div class="sport-card"><div class="sport-season">Winter</div><div class="sport-name">Indoor Track</div></div>
+                <div class="sport-card"><div class="sport-season">Spring</div><div class="sport-name">Baseball</div></div>
+                <div class="sport-card"><div class="sport-season">Spring</div><div class="sport-name">Softball</div></div>
+                <div class="sport-card"><div class="sport-season">Spring</div><div class="sport-name">Tennis</div></div>
+                <div class="sport-card"><div class="sport-season">Spring</div><div class="sport-name">Track & Field</div></div>
+                <div class="sport-card"><div class="sport-season">Spring</div><div class="sport-name">Golf</div></div>
             </div>
         </div>
     </section>
 
     <!-- COLLEGE DESTINATIONS -->
-    <section class="section bg-navy">
+    <section class="section bg-navy" style="padding-top: 0;">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Where Our Spartans Go</h2>
-            <div class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
-                Our graduates are accepted to the nation's most prestigious colleges and universities, prepared for success through their Immaculata education.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">College Placement</span>
+                <h2 class="section-title">Where Our Spartans Go</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Our graduates are accepted to the nation's most prestigious colleges and universities, prepared for success through their Immaculata education.
+                </p>
             </div>
             
             <div class="colleges-grid animate-on-scroll">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/princeton1.jpg" alt="Princeton University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/columbia.png" alt="Columbia University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/cornell.png" alt="Cornell University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/georgetown.png" alt="Georgetown University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/notredame.png" alt="University of Notre Dame" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/villanova1.jpg" alt="Villanova University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/nyu.png" alt="New York University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/rutgers.png" alt="Rutgers University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/pennstate.png" alt="Penn State University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/berkeley.png" alt="UC Berkeley" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/cmu.png" alt="Carnegie Mellon University" class="college-logo">
-                <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/setonhall.png" alt="Seton Hall University" class="college-logo">
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/princeton1.jpg" alt="Princeton University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/columbia.png" alt="Columbia University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/cornell.png" alt="Cornell University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/georgetown.png" alt="Georgetown University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/notredame.png" alt="University of Notre Dame" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/villanova1.jpg" alt="Villanova University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/nyu.png" alt="New York University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/rutgers.png" alt="Rutgers University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/pennstate.png" alt="Penn State University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/berkeley.png" alt="UC Berkeley" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/cmu.png" alt="Carnegie Mellon University" class="college-logo"></div>
+                <div class="college-logo-wrap"><img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Affiliations/setonhall.png" alt="Seton Hall University" class="college-logo"></div>
             </div>
         </div>
     </section>
 
-    <!-- CAMPUS LIFE GALLERY -->
+    <!-- CAMPUS LIFE -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Campus Life</h2>
-            <div class="section-subtitle">
-                Experience the vibrant community life that makes Immaculata special—from service opportunities and spiritual growth to arts, athletics, and lifelong friendships.
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Student Life</span>
+                <h2 class="section-title">Campus Life</h2>
+                <div class="section-divider"></div>
+                <p class="section-desc">
+                    Experience the vibrant community life that makes Immaculata special — from service opportunities and spiritual growth to arts, athletics, and lifelong friendships.
+                </p>
             </div>
             
             <div class="gallery-grid animate-on-scroll">
@@ -1165,47 +1451,42 @@
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/01_Service.jpg" alt="Community Service" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Community Service</h3>
-                        <p>Living our faith through service to others in our local and global communities.</p>
+                        <p>Living our faith through service to others.</p>
                     </div>
                 </div>
-                
                 <div class="gallery-item">
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/Fall%202019/Chapel%20Photo.JPG" alt="Chapel" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Spiritual Growth</h3>
-                        <p>Our beautiful chapel serves as the heart of our faith community.</p>
+                        <p>Our chapel — the heart of our faith community.</p>
                     </div>
                 </div>
-                
                 <div class="gallery-item">
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/2020_2021/Graduation2021a.jpg" alt="Graduation" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Graduation Day</h3>
-                        <p>Celebrating four years of growth, achievement, and lifelong friendships.</p>
+                        <p>Celebrating growth, achievement, and friendship.</p>
                     </div>
                 </div>
-                
                 <div class="gallery-item">
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/24-25/Fast_Facts_Slides_08_Theater.jpg" alt="Theater Program" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Arts & Theater</h3>
-                        <p>Expressing creativity and building confidence through our performing arts programs.</p>
+                        <p>Creativity and confidence through performing arts.</p>
                     </div>
                 </div>
-                
                 <div class="gallery-item">
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/12_Marching_Band.jpg" alt="Marching Band" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Marching Band</h3>
-                        <p>Musical excellence and school spirit come together in our award-winning band program.</p>
+                        <p>Musical excellence and school spirit.</p>
                     </div>
                 </div>
-                
                 <div class="gallery-item">
                     <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/03_Baseball.jpg" alt="Baseball" class="gallery-image">
                     <div class="gallery-overlay">
                         <h3>Athletic Excellence</h3>
-                        <p>Competing with pride and sportsmanship in the Spartan tradition.</p>
+                        <p>Competing with pride in the Spartan tradition.</p>
                     </div>
                 </div>
             </div>
@@ -1213,44 +1494,48 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section id="contact" class="section" style="background: var(--bg-white);">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Visit Our Campus</h2>
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Visit Our Campus</h2>
+                <div class="section-divider"></div>
+            </div>
             
             <div class="contact-grid animate-on-scroll">
                 <div class="contact-info">
-                    <h3>Get in Touch</h3>
+                    <h3>Contact Information</h3>
                     
                     <div class="contact-item">
-                        <span class="contact-icon">📍</span>
+                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
                         <div>
-                            <strong>Address</strong><br>
+                            <strong>Address</strong>
                             240 Mountain Avenue<br>
                             Somerville, NJ 08876
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-icon">📞</span>
+                        <span class="contact-icon"><i class="fas fa-phone-alt"></i></span>
                         <div>
-                            <strong>Phone</strong><br>
+                            <strong>Phone</strong>
                             (908) 722-0200
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-icon">✉️</span>
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
                         <div>
-                            <strong>Email</strong><br>
+                            <strong>Email</strong>
                             info@immaculatahighschool.org
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <span class="contact-icon">🕐</span>
+                        <span class="contact-icon"><i class="fas fa-clock"></i></span>
                         <div>
-                            <strong>Office Hours</strong><br>
-                            Monday - Friday: 8:00 AM - 4:00 PM<br>
+                            <strong>Office Hours</strong>
+                            Monday – Friday: 8:00 AM – 4:00 PM<br>
                             Saturday: By appointment
                         </div>
                     </div>
@@ -1260,8 +1545,8 @@
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.267699999999!2d-74.6113!3d40.5683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c39a6c5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2s240%20Mountain%20Ave%2C%20Somerville%2C%20NJ%2008876!5e0!3m2!1sen!2sus!4v1234567890"
                         width="100%" 
-                        height="300" 
-                        style="border:0; border-radius: 15px;" 
+                        height="100%" 
+                        style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
@@ -1278,12 +1563,12 @@
                 <div>
                     <div class="footer-brand">
                         <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Templates/Resources/IHS%20Seal.png" alt="IHS Seal" class="footer-logo">
-                        <div>
-                            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem;">Immaculata High School</h3>
-                            <p style="opacity: 0.8; margin: 0;">Faith • Scholarship • Service • Friendship</p>
+                        <div class="footer-brand-text">
+                            <h3>Immaculata High School</h3>
+                            <p>Faith • Scholarship • Service • Friendship</p>
                         </div>
                     </div>
-                    <p style="opacity: 0.8; line-height: 1.6;">
+                    <p class="footer-about">
                         240 Mountain Avenue<br>
                         Somerville, NJ 08876<br>
                         (908) 722-0200
@@ -1322,63 +1607,53 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Immaculata High School. All rights reserved. | <a href="#" style="color: var(--accent-gold);">Privacy Policy</a> | <a href="#" style="color: var(--accent-gold);">Terms of Use</a></p>
-                <p style="margin-top: 0.5rem; opacity: 0.6;">Founded by Msgr. Eugene B. Kelly | Educating minds, forming hearts, transforming lives since 1962</p>
+                <p>&copy; 2026 Immaculata High School. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+                <p style="margin-top: 0.5rem;">Founded by Msgr. Eugene B. Kelly | Educating minds, forming hearts, transforming lives since 1962</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-        // Observe all animate-on-scroll elements
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Sticky navigation
+        // Sticky nav + hide announcement bar on scroll
+        const announcementBar = document.querySelector('.announcement-bar');
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+            const scrolled = window.scrollY > 50;
+            document.getElementById('navbar').classList.toggle('scrolled', scrolled);
+            if (announcementBar) announcementBar.style.transform = scrolled ? 'translateY(-100%)' : 'translateY(0)';
+            if (announcementBar) announcementBar.style.transition = 'transform 0.3s ease';
+        }, { passive: true });
 
-        // Counter animation for stats
+        // Counter animation
         function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const increment = target / 50;
-                let current = 0;
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const suffix = counter.dataset.suffix || '';
+                const duration = 1500;
+                const start = performance.now();
                 
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current);
-                    }
-                }, 30);
+                function tick(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.floor(eased * target) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                    else counter.textContent = target + suffix;
+                }
+                requestAnimationFrame(tick);
             });
         }
 
-        // Trigger counter animation when stats section is visible
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1389,46 +1664,23 @@
         }, { threshold: 0.5 });
 
         const statsBar = document.querySelector('.stats-bar');
-        if (statsBar) {
-            statsObserver.observe(statsBar);
-        }
+        if (statsBar) statsObserver.observe(statsBar);
 
-        // Smooth scrolling for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                 }
             });
         });
 
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu?.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Form submission
+        // Form
         document.querySelector('.admission-form')?.addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your interest in Immaculata High School! We will contact you soon.');
-        });
-
-        // Parallax effect for hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
     </script>
 </body>
