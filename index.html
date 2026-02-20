@@ -153,9 +153,9 @@
         }
 
         .apply-btn:hover {
-            background: var(--accent-gold-light);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
+            background: linear-gradient(to bottom, var(--accent-gold-light), var(--accent-gold));
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
         }
 
         .mobile-menu {
@@ -324,8 +324,8 @@
 
         .btn-primary:hover {
             background: var(--accent-gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
         }
 
         .btn-secondary {
@@ -402,7 +402,7 @@
 
         .section.bg-navy .section-desc,
         .section.bg-slate .section-desc {
-            color: rgba(255,255,255,0.75);
+            color: rgba(255,255,255,0.85);
         }
 
         /* ── PILLARS ── */
@@ -1254,13 +1254,13 @@
             </ul>
             
             <a href="#admissions" class="apply-btn">Apply Now</a>
-            <button class="mobile-menu" onclick="document.querySelector('.mobile-nav-overlay').classList.add('active')">☰</button>
+            <button class="mobile-menu" aria-label="Open mobile menu" onclick="document.querySelector('.mobile-nav-overlay').classList.add('active')"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
     <!-- MOBILE NAV OVERLAY -->
     <div class="mobile-nav-overlay">
-        <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+        <button class="mobile-nav-close" aria-label="Close mobile menu" onclick="this.parentElement.classList.remove('active')"><i class="fas fa-times"></i></button>
         <a href="#home" onclick="this.parentElement.classList.remove('active')">Home</a>
         <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
         <a href="#academics" onclick="this.parentElement.classList.remove('active')">Academics</a>
@@ -1798,6 +1798,12 @@
                         <li><a href="#news">News & Events</a></li>
                         <li><a href="#about">Visit Campus</a></li>
                     </ul>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/ImmaculataHighSchool" target="_blank" style="color: var(--accent-gold); font-size: 1.3rem; transition: opacity 0.2s;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/immaculatahs" target="_blank" style="color: var(--accent-gold); font-size: 1.3rem; transition: opacity 0.2s;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/ImmaculataHS" target="_blank" style="color: var(--accent-gold); font-size: 1.3rem; transition: opacity 0.2s;" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/@immaculatahighschool" target="_blank" style="color: var(--accent-gold); font-size: 1.3rem; transition: opacity 0.2s;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
             
