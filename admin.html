@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immaculata High School - Admin Panel</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a5f;
+            --secondary-blue: #2c5282;
+            --accent-gold: #c9a227;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+            --text-dark: #2d3748;
+            --success: #48bb78;
+            --error: #f56565;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .login-box {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .login-title {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .login-subtitle {
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--medium-gray);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark-gray);
+            color: var(--white);
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-success:hover {
+            background: #38a169;
+        }
+
+        .btn-gold {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+        }
+
+        .btn-gold:hover {
+            background: #b7941f;
+        }
+
+        .error {
+            color: var(--error);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Admin Interface */
+        .admin-interface {
+            display: none;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--dark-gray);
+        }
+
+        .tabs {
+            display: flex;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tab {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: var(--dark-gray);
+        }
+
+        .tab.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Dynamic Lists */
+        .dynamic-list {
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .list-item {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--error);
+            color: var(--white);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-btn {
+            background: var(--success);
+            color: var(--white);
+            margin-top: 1rem;
+        }
+
+        .add-btn:hover {
+            background: #38a169;
+        }
+
+        /* Actions Bar */
+        .actions {
+            position: sticky;
+            bottom: 20px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Preview Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 15px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            max-height: 70vh;
+            overflow: auto;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        /* Instructions */
+        .instructions {
+            background: #e6fffa;
+            border: 2px solid #38b2ac;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .instructions h3 {
+            color: #2c7a7b;
+            margin-bottom: 1rem;
+        }
+
+        .instructions ol {
+            margin-left: 2rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+
+        .status-error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #fc8181;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1 class="login-title">🏛️ Admin Panel</h1>
+            <p class="login-subtitle">Immaculata High School Website Management</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Enter Password:</label>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div class="error" id="loginError"></div>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Interface -->
+    <div class="admin-interface" id="adminInterface">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1>🏛️ Immaculata High School - Content Management</h1>
+                <p>Edit your website content easily. All changes are saved to the JSON file for upload.</p>
+                <button onclick="logout()" class="btn btn-secondary" style="float: right; margin-top: -2rem;">Logout</button>
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>📋 How to Update Your Website</h3>
+                <ol>
+                    <li><strong>Edit Content:</strong> Use the tabs below to modify different sections of your website</li>
+                    <li><strong>Preview Changes:</strong> Click "Preview Website" to see how your changes will look</li>
+                    <li><strong>Save Changes:</strong> Click "Download Updated Content" to get the new site-content.json file</li>
+                    <li><strong>Upload to Website:</strong> Replace the old site-content.json file on your web server with the new one</li>
+                    <li><strong>Refresh Website:</strong> Your changes will appear immediately when visitors refresh the page</li>
+                </ol>
+            </div>
+
+            <!-- Status Messages -->
+            <div id="statusMessages"></div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('school')">School Info</button>
+                <button class="tab" onclick="switchTab('hero')">Hero Section</button>
+                <button class="tab" onclick="switchTab('news')">News & Highlights</button>
+                <button class="tab" onclick="switchTab('academics')">Academics</button>
+                <button class="tab" onclick="switchTab('admissions')">Admissions</button>
+                <button class="tab" onclick="switchTab('athletics')">Athletics</button>
+                <button class="tab" onclick="switchTab('events')">Events</button>
+                <button class="tab" onclick="switchTab('contact')">Contact</button>
+            </div>
+
+            <!-- Tab Content -->
+            <!-- School Info Tab -->
+            <div class="tab-content active" id="school-tab">
+                <h2 class="section-title">School Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schoolName">School Name</label>
+                        <input type="text" id="schoolName">
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolMotto">School Motto</label>
+                        <input type="text" id="schoolMotto">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schoolAddress">Address</label>
+                        <input type="text" id="schoolAddress">
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolPhone">Phone Number</label>
+                        <input type="tel" id="schoolPhone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="schoolEmail">Email</label>
+                        <input type="email" id="schoolEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolFounder">Founded By</label>
+                        <input type="text" id="schoolFounder">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="yearFounded">Year Founded</label>
+                        <input type="text" id="yearFounded">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactHours">Office Hours</label>
+                        <input type="text" id="contactHours">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section Tab -->
+            <div class="tab-content" id="hero-tab">
+                <h2 class="section-title">Hero Section</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="heroHeadline">Main Headline</label>
+                        <input type="text" id="heroHeadline">
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="heroSubheadline">Subheadline</label>
+                        <input type="text" id="heroSubheadline">
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="heroBackground">Background Image URL</label>
+                        <input type="url" id="heroBackground" placeholder="https://example.com/image.jpg">
+                        <small>Tip: Use Unsplash.com for free high-quality images</small>
+                    </div>
+                </div>
+                <h3 class="section-title">Call-to-Action Buttons</h3>
+                <div id="ctaButtons"></div>
+                <button onclick="addCTAButton()" class="btn add-btn">+ Add Button</button>
+            </div>
+
+            <!-- News Tab -->
+            <div class="tab-content" id="news-tab">
+                <h2 class="section-title">News & Highlights</h2>
+                <div id="newsItems"></div>
+                <button onclick="addNewsItem()" class="btn add-btn">+ Add News Item</button>
+            </div>
+
+            <!-- Academics Tab -->
+            <div class="tab-content" id="academics-tab">
+                <h2 class="section-title">Academics Section</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="academicsTitle">Section Title</label>
+                        <input type="text" id="academicsTitle">
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="academicsDescription">Description</label>
+                        <textarea id="academicsDescription"></textarea>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="academicsVP">Vice President Name</label>
+                        <input type="text" id="academicsVP">
+                    </div>
+                </div>
+                <h3 class="section-title">Academic Programs</h3>
+                <div id="academicPrograms"></div>
+                <button onclick="addAcademicProgram()" class="btn add-btn">+ Add Program</button>
+            </div>
+
+            <!-- Admissions Tab -->
+            <div class="tab-content" id="admissions-tab">
+                <h2 class="section-title">Admissions Section</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="admissionsTitle">Section Title</label>
+                        <input type="text" id="admissionsTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="admissionsDirector">Admissions Director</label>
+                        <input type="text" id="admissionsDirector">
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="admissionsDescription">Description</label>
+                        <textarea id="admissionsDescription"></textarea>
+                    </div>
+                </div>
+                <h3 class="section-title">Student Testimonials</h3>
+                <div id="testimonials"></div>
+                <button onclick="addTestimonial()" class="btn add-btn">+ Add Testimonial</button>
+            </div>
+
+            <!-- Athletics Tab -->
+            <div class="tab-content" id="athletics-tab">
+                <h2 class="section-title">Athletics Section</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="athleticsTitle">Section Title</label>
+                        <input type="text" id="athleticsTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="athleticsDirector">Athletics Director</label>
+                        <input type="text" id="athleticsDirector">
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="athleticsDescription">Description</label>
+                        <textarea id="athleticsDescription"></textarea>
+                    </div>
+                </div>
+                <h3 class="section-title">Sports Programs</h3>
+                <div id="sportsPrograms"></div>
+                <button onclick="addSport()" class="btn add-btn">+ Add Sport</button>
+            </div>
+
+            <!-- Events Tab -->
+            <div class="tab-content" id="events-tab">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div id="eventsItems"></div>
+                <button onclick="addEvent()" class="btn add-btn">+ Add Event</button>
+            </div>
+
+            <!-- Contact Tab -->
+            <div class="tab-content" id="contact-tab">
+                <h2 class="section-title">Quick Stats</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="statAPCourses">AP Courses</label>
+                        <input type="text" id="statAPCourses">
+                    </div>
+                    <div class="form-group">
+                        <label for="statSports">Number of Sports</label>
+                        <input type="text" id="statSports">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="statClubs">Number of Clubs</label>
+                        <input type="text" id="statClubs">
+                    </div>
+                    <div class="form-group">
+                        <label for="statAcceptance">College Acceptance Rate</label>
+                        <input type="text" id="statAcceptance">
+                    </div>
+                </div>
+                <h3 class="section-title">Social Media Links</h3>
+                <div id="socialMedia"></div>
+            </div>
+        </div>
+
+        <!-- Actions Bar -->
+        <div class="actions">
+            <button onclick="previewWebsite()" class="btn btn-gold">👁️ Preview Website</button>
+            <button onclick="downloadContent()" class="btn btn-success">💾 Download Updated Content</button>
+            <button onclick="resetChanges()" class="btn btn-secondary">🔄 Reset Changes</button>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Website Preview</h3>
+                <button class="close-btn" onclick="closePreview()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="previewFrame" width="100%" height="600" style="border: none; border-radius: 8px;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let siteData = {};
+        let originalData = {};
+        const correctPassword = "spartan2026";
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if already logged in
+            if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+                showAdminInterface();
+            }
+
+            // Login form handler
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const password = document.getElementById('password').value;
+                const errorDiv = document.getElementById('loginError');
+
+                if (password === correctPassword) {
+                    sessionStorage.setItem('adminLoggedIn', 'true');
+                    showAdminInterface();
+                } else {
+                    errorDiv.textContent = 'Invalid password. Please try again.';
+                }
+            });
+        });
+
+        // Show admin interface
+        async function showAdminInterface() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminInterface').style.display = 'block';
+
+            // Load site content
+            try {
+                const response = await fetch('site-content.json');
+                siteData = await response.json();
+                originalData = JSON.parse(JSON.stringify(siteData)); // Deep copy
+                populateFields();
+                showStatus('Content loaded successfully!', 'success');
+            } catch (error) {
+                console.error('Error loading site content:', error);
+                showStatus('Error loading site content. Some features may not work properly.', 'error');
+            }
+        }
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            location.reload();
+        }
+
+        // Show status messages
+        function showStatus(message, type) {
+            const container = document.getElementById('statusMessages');
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.textContent = message;
+            container.appendChild(statusDiv);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                container.removeChild(statusDiv);
+            }, 5000);
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to selected tab and content
+            event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        // Populate form fields
+        function populateFields() {
+            if (!siteData.school) return;
+
+            // School Info
+            document.getElementById('schoolName').value = siteData.school.name || '';
+            document.getElementById('schoolMotto').value = siteData.school.motto || '';
+            document.getElementById('schoolAddress').value = siteData.school.address || '';
+            document.getElementById('schoolPhone').value = siteData.school.phone || '';
+            document.getElementById('schoolEmail').value = siteData.school.email || '';
+            document.getElementById('schoolFounder').value = siteData.school.founder || '';
+            document.getElementById('yearFounded').value = siteData.stats?.founded || '';
+            document.getElementById('contactHours').value = siteData.contact?.hours || '';
+
+            // Hero Section
+            document.getElementById('heroHeadline').value = siteData.hero?.headline || '';
+            document.getElementById('heroSubheadline').value = siteData.hero?.subheadline || '';
+            document.getElementById('heroBackground').value = siteData.hero?.backgroundImage || '';
+
+            // Academics
+            document.getElementById('academicsTitle').value = siteData.academics?.title || '';
+            document.getElementById('academicsDescription').value = siteData.academics?.description || '';
+            document.getElementById('academicsVP').value = siteData.academics?.vicePresident || '';
+
+            // Admissions
+            document.getElementById('admissionsTitle').value = siteData.admissions?.title || '';
+            document.getElementById('admissionsDescription').value = siteData.admissions?.description || '';
+            document.getElementById('admissionsDirector').value = siteData.admissions?.director || '';
+
+            // Athletics
+            document.getElementById('athleticsTitle').value = siteData.athletics?.title || '';
+            document.getElementById('athleticsDescription').value = siteData.athletics?.description || '';
+            document.getElementById('athleticsDirector').value = siteData.athletics?.director || '';
+
+            // Stats
+            document.getElementById('statAPCourses').value = siteData.stats?.apCourses || '';
+            document.getElementById('statSports').value = siteData.stats?.sports || '';
+            document.getElementById('statClubs').value = siteData.stats?.clubs || '';
+            document.getElementById('statAcceptance').value = siteData.stats?.collegeAcceptance || '';
+
+            // Populate dynamic lists
+            populateCTAButtons();
+            populateNews();
+            populateAcademicPrograms();
+            populateTestimonials();
+            populateSports();
+            populateEvents();
+            populateSocialMedia();
+        }
+
+        // CTA Buttons
+        function populateCTAButtons() {
+            const container = document.getElementById('ctaButtons');
+            container.innerHTML = '';
+            
+            if (siteData.hero?.ctaButtons) {
+                siteData.hero.ctaButtons.forEach((button, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeCTAButton(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Button Text</label>
+                                    <input type="text" value="${button.text || ''}" onchange="updateCTAButton(${index}, 'text', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Link</label>
+                                    <input type="text" value="${button.href || ''}" onchange="updateCTAButton(${index}, 'href', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" ${button.primary ? 'checked' : ''} onchange="updateCTAButton(${index}, 'primary', this.checked)">
+                                    Primary Button (Gold)
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addCTAButton() {
+            if (!siteData.hero.ctaButtons) siteData.hero.ctaButtons = [];
+            siteData.hero.ctaButtons.push({ text: '', href: '', primary: false });
+            populateCTAButtons();
+        }
+
+        function removeCTAButton(index) {
+            siteData.hero.ctaButtons.splice(index, 1);
+            populateCTAButtons();
+        }
+
+        function updateCTAButton(index, field, value) {
+            siteData.hero.ctaButtons[index][field] = value;
+        }
+
+        // News Items
+        function populateNews() {
+            const container = document.getElementById('newsItems');
+            container.innerHTML = '';
+            
+            if (siteData.news) {
+                siteData.news.forEach((item, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeNewsItem(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" value="${item.title || ''}" onchange="updateNewsItem(${index}, 'title', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="text" value="${item.date || ''}" onchange="updateNewsItem(${index}, 'date', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Summary</label>
+                                    <textarea onchange="updateNewsItem(${index}, 'summary', this.value)">${item.summary || ''}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Image URL</label>
+                                    <input type="url" value="${item.image || ''}" onchange="updateNewsItem(${index}, 'image', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Link</label>
+                                    <input type="url" value="${item.link || ''}" onchange="updateNewsItem(${index}, 'link', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addNewsItem() {
+            if (!siteData.news) siteData.news = [];
+            siteData.news.push({ title: '', date: '', summary: '', image: '', link: '#' });
+            populateNews();
+        }
+
+        function removeNewsItem(index) {
+            siteData.news.splice(index, 1);
+            populateNews();
+        }
+
+        function updateNewsItem(index, field, value) {
+            siteData.news[index][field] = value;
+        }
+
+        // Academic Programs
+        function populateAcademicPrograms() {
+            const container = document.getElementById('academicPrograms');
+            container.innerHTML = '';
+            
+            if (siteData.academics?.programs) {
+                siteData.academics.programs.forEach((program, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeAcademicProgram(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Program Name</label>
+                                    <input type="text" value="${program.name || ''}" onchange="updateAcademicProgram(${index}, 'name', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea onchange="updateAcademicProgram(${index}, 'description', this.value)">${program.description || ''}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addAcademicProgram() {
+            if (!siteData.academics.programs) siteData.academics.programs = [];
+            siteData.academics.programs.push({ name: '', description: '' });
+            populateAcademicPrograms();
+        }
+
+        function removeAcademicProgram(index) {
+            siteData.academics.programs.splice(index, 1);
+            populateAcademicPrograms();
+        }
+
+        function updateAcademicProgram(index, field, value) {
+            siteData.academics.programs[index][field] = value;
+        }
+
+        // Testimonials
+        function populateTestimonials() {
+            const container = document.getElementById('testimonials');
+            container.innerHTML = '';
+            
+            if (siteData.admissions?.testimonials) {
+                siteData.admissions.testimonials.forEach((testimonial, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeTestimonial(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Student Name</label>
+                                    <input type="text" value="${testimonial.author || ''}" onchange="updateTestimonial(${index}, 'author', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>College</label>
+                                    <input type="text" value="${testimonial.college || ''}" onchange="updateTestimonial(${index}, 'college', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Testimonial Text</label>
+                                    <textarea onchange="updateTestimonial(${index}, 'text', this.value)">${testimonial.text || ''}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addTestimonial() {
+            if (!siteData.admissions.testimonials) siteData.admissions.testimonials = [];
+            siteData.admissions.testimonials.push({ text: '', author: '', college: '' });
+            populateTestimonials();
+        }
+
+        function removeTestimonial(index) {
+            siteData.admissions.testimonials.splice(index, 1);
+            populateTestimonials();
+        }
+
+        function updateTestimonial(index, field, value) {
+            siteData.admissions.testimonials[index][field] = value;
+        }
+
+        // Sports
+        function populateSports() {
+            const container = document.getElementById('sportsPrograms');
+            container.innerHTML = '';
+            
+            if (siteData.athletics?.sports) {
+                siteData.athletics.sports.forEach((sport, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeSport(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Sport Name</label>
+                                    <input type="text" value="${sport.name || ''}" onchange="updateSport(${index}, 'name', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Season</label>
+                                    <select onchange="updateSport(${index}, 'season', this.value)">
+                                        <option value="Fall" ${sport.season === 'Fall' ? 'selected' : ''}>Fall</option>
+                                        <option value="Winter" ${sport.season === 'Winter' ? 'selected' : ''}>Winter</option>
+                                        <option value="Spring" ${sport.season === 'Spring' ? 'selected' : ''}>Spring</option>
+                                        <option value="Year-round" ${sport.season === 'Year-round' ? 'selected' : ''}>Year-round</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Achievements</label>
+                                    <input type="text" value="${sport.achievements || ''}" onchange="updateSport(${index}, 'achievements', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addSport() {
+            if (!siteData.athletics.sports) siteData.athletics.sports = [];
+            siteData.athletics.sports.push({ name: '', season: 'Fall', achievements: '' });
+            populateSports();
+        }
+
+        function removeSport(index) {
+            siteData.athletics.sports.splice(index, 1);
+            populateSports();
+        }
+
+        function updateSport(index, field, value) {
+            siteData.athletics.sports[index][field] = value;
+        }
+
+        // Events
+        function populateEvents() {
+            const container = document.getElementById('eventsItems');
+            container.innerHTML = '';
+            
+            if (siteData.events) {
+                siteData.events.forEach((event, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <button class="remove-btn" onclick="removeEvent(${index})">×</button>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Event Title</label>
+                                    <input type="text" value="${event.title || ''}" onchange="updateEvent(${index}, 'title', this.value)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="text" value="${event.date || ''}" onchange="updateEvent(${index}, 'date', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Time</label>
+                                    <input type="text" value="${event.time || ''}" onchange="updateEvent(${index}, 'time', this.value)">
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea onchange="updateEvent(${index}, 'description', this.value)">${event.description || ''}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function addEvent() {
+            if (!siteData.events) siteData.events = [];
+            siteData.events.push({ title: '', date: '', time: '', description: '' });
+            populateEvents();
+        }
+
+        function removeEvent(index) {
+            siteData.events.splice(index, 1);
+            populateEvents();
+        }
+
+        function updateEvent(index, field, value) {
+            siteData.events[index][field] = value;
+        }
+
+        // Social Media
+        function populateSocialMedia() {
+            const container = document.getElementById('socialMedia');
+            container.innerHTML = '';
+            
+            if (siteData.footer?.socialMedia) {
+                siteData.footer.socialMedia.forEach((social, index) => {
+                    container.innerHTML += `
+                        <div class="list-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Platform</label>
+                                    <input type="text" value="${social.platform || ''}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>URL</label>
+                                    <input type="url" value="${social.url || ''}" onchange="updateSocialMedia(${index}, 'url', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function updateSocialMedia(index, field, value) {
+            siteData.footer.socialMedia[index][field] = value;
+        }
+
+        // Save data from form fields
+        function saveFormData() {
+            // School Info
+            siteData.school.name = document.getElementById('schoolName').value;
+            siteData.school.motto = document.getElementById('schoolMotto').value;
+            siteData.school.address = document.getElementById('schoolAddress').value;
+            siteData.school.phone = document.getElementById('schoolPhone').value;
+            siteData.school.email = document.getElementById('schoolEmail').value;
+            siteData.school.founder = document.getElementById('schoolFounder').value;
+            siteData.stats.founded = document.getElementById('yearFounded').value;
+            siteData.contact.hours = document.getElementById('contactHours').value;
+
+            // Hero Section
+            siteData.hero.headline = document.getElementById('heroHeadline').value;
+            siteData.hero.subheadline = document.getElementById('heroSubheadline').value;
+            siteData.hero.backgroundImage = document.getElementById('heroBackground').value;
+
+            // Academics
+            siteData.academics.title = document.getElementById('academicsTitle').value;
+            siteData.academics.description = document.getElementById('academicsDescription').value;
+            siteData.academics.vicePresident = document.getElementById('academicsVP').value;
+
+            // Admissions
+            siteData.admissions.title = document.getElementById('admissionsTitle').value;
+            siteData.admissions.description = document.getElementById('admissionsDescription').value;
+            siteData.admissions.director = document.getElementById('admissionsDirector').value;
+
+            // Athletics
+            siteData.athletics.title = document.getElementById('athleticsTitle').value;
+            siteData.athletics.description = document.getElementById('athleticsDescription').value;
+            siteData.athletics.director = document.getElementById('athleticsDirector').value;
+
+            // Stats
+            siteData.stats.apCourses = document.getElementById('statAPCourses').value;
+            siteData.stats.sports = document.getElementById('statSports').value;
+            siteData.stats.clubs = document.getElementById('statClubs').value;
+            siteData.stats.collegeAcceptance = document.getElementById('statAcceptance').value;
+        }
+
+        // Preview website
+        function previewWebsite() {
+            saveFormData();
+            
+            // Create a temporary HTML with the updated data
+            const previewHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Preview - ${siteData.school.name}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        .section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+                        .hero { background: linear-gradient(45deg, #1e3a5f, #2c5282); color: white; text-align: center; padding: 40px; }
+                        .news-item, .program, .sport, .testimonial { margin: 10px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; }
+                        .btn { background: #c9a227; color: #1e3a5f; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 5px; display: inline-block; }
+                    </style>
+                </head>
+                <body>
+                    <div class="hero section">
+                        <h1>${siteData.hero.headline}</h1>
+                        <p>${siteData.hero.subheadline}</p>
+                        ${siteData.hero.ctaButtons ? siteData.hero.ctaButtons.map(btn => `<a href="${btn.href}" class="btn">${btn.text}</a>`).join('') : ''}
+                    </div>
+                    
+                    <div class="section">
+                        <h2>School Information</h2>
+                        <p><strong>${siteData.school.name}</strong><br>
+                        ${siteData.school.motto}<br>
+                        ${siteData.school.address}<br>
+                        ${siteData.school.phone}<br>
+                        ${siteData.school.email}</p>
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Latest News</h2>
+                        ${siteData.news ? siteData.news.slice(0, 3).map(news => `
+                            <div class="news-item">
+                                <h3>${news.title}</h3>
+                                <small>${news.date}</small>
+                                <p>${news.summary}</p>
+                            </div>
+                        `).join('') : '<p>No news items</p>'}
+                    </div>
+                    
+                    <div class="section">
+                        <h2>${siteData.academics.title}</h2>
+                        <p>${siteData.academics.description}</p>
+                        ${siteData.academics.programs ? siteData.academics.programs.map(program => `
+                            <div class="program">
+                                <strong>${program.name}</strong>: ${program.description}
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                    
+                    <div class="section">
+                        <h2>${siteData.athletics.title}</h2>
+                        <p>${siteData.athletics.description}</p>
+                        ${siteData.athletics.sports ? siteData.athletics.sports.slice(0, 6).map(sport => `
+                            <div class="sport">
+                                <strong>${sport.name}</strong> (${sport.season}): ${sport.achievements}
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                    
+                    <div class="section">
+                        <h2>Student Testimonials</h2>
+                        ${siteData.admissions.testimonials ? siteData.admissions.testimonials.slice(0, 2).map(testimonial => `
+                            <div class="testimonial">
+                                <p>"${testimonial.text}"</p>
+                                <cite>- ${testimonial.author}, ${testimonial.college}</cite>
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 8px;">
+                        <p><strong>This is a simplified preview.</strong><br>
+                        The actual website will have full styling, animations, and responsive design.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([previewHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            document.getElementById('previewFrame').src = url;
+            document.getElementById('previewModal').style.display = 'flex';
+            
+            showStatus('Preview generated! This is a simplified version of your website.', 'success');
+        }
+
+        // Close preview
+        function closePreview() {
+            document.getElementById('previewModal').style.display = 'none';
+        }
+
+        // Download updated content
+        function downloadContent() {
+            saveFormData();
+            
+            const dataStr = JSON.stringify(siteData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'site-content.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus('Content file downloaded! Upload this file to your web server to update the website.', 'success');
+        }
+
+        // Reset changes
+        function resetChanges() {
+            if (confirm('Are you sure you want to reset all changes? This will restore the original content.')) {
+                siteData = JSON.parse(JSON.stringify(originalData));
+                populateFields();
+                showStatus('All changes have been reset to original content.', 'success');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+{
+  "school": {
+    "name": "Immaculata High School",
+    "address": "240 Mountain Avenue, Somerville, NJ 08876",
+    "phone": "(908) 722-0200",
+    "email": "info@immaculatahighschool.org",
+    "motto": "Faith • Scholarship • Service • Friendship",
+    "mascot": "Spartans",
+    "colors": {
+      "primary": "#1e3a5f",
+      "secondary": "#2c5282",
+      "accent": "#c9a227"
+    },
+    "founder": "Msgr. Eugene B. Kelly"
+  },
+  "navigation": [
+    {"label": "Home", "href": "#home"},
+    {"label": "News", "href": "#news"},
+    {"label": "Events", "href": "#events"},
+    {"label": "Academics", "href": "#academics"},
+    {"label": "Admissions", "href": "#admissions"},
+    {"label": "Athletics", "href": "#athletics"},
+    {"label": "Contact", "href": "#contact"}
+  ],
+  "hero": {
+    "headline": "Immaculata High School",
+    "subheadline": "Where Faith, Scholarship, Service, and Friendship Unite",
+    "backgroundImage": "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "ctaButtons": [
+      {"text": "Apply Now", "href": "#admissions", "primary": true},
+      {"text": "Schedule a Visit", "href": "#contact"},
+      {"text": "Request Info", "href": "#contact"}
+    ]
+  },
+  "stats": {
+    "founded": "1962",
+    "apCourses": "18",
+    "sports": "15",
+    "clubs": "25",
+    "collegeAcceptance": "100"
+  },
+  "news": [
+    {
+      "title": "Taylor Thiele Wins 2nd Consecutive Skyland Conference Wrestling Championship",
+      "date": "February 17, 2026",
+      "summary": "Senior Taylor Thiele makes history with back-to-back championship wins, leading the Spartans wrestling program to new heights.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "title": "Mrs. Kristin Camiolo Receives Prestigious Lux Dei Award",
+      "date": "February 10, 2026",
+      "summary": "Mathematics teacher Mrs. Camiolo honored for her outstanding dedication to Catholic education and student excellence.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "title": "Football Program Welcomes New Leadership for 2026",
+      "date": "February 5, 2026",
+      "summary": "Jeff Vanderbeek and Dallas Whitaker step into leadership roles, bringing fresh energy to Spartan football.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "title": "Jack Cust Jr. Inducted into NJSIAA Hall of Fame 2026",
+      "date": "January 28, 2026",
+      "summary": "Former Spartan standout receives highest honor in New Jersey high school athletics.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "title": "Wrestling Team Captures Somerset County Title",
+      "date": "January 19, 2026",
+      "summary": "Historic victory as Spartans wrestling makes county championship history with dominant performance.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "title": "Cheer Squad Wins Garden State Challenge Division Championship",
+      "date": "January 12, 2026",
+      "summary": "Spartan cheerleaders bring home gold with spectacular performance at state competition.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    }
+  ],
+  "academics": {
+    "title": "Academic Excellence",
+    "description": "Immaculata High School offers a comprehensive curriculum designed to prepare students for success in college and beyond.",
+    "vicePresident": "Mrs. Kristin Boczany",
+    "programs": [
+      {
+        "name": "Advanced Placement",
+        "description": "18+ AP courses across all disciplines"
+      },
+      {
+        "name": "Honors Program",
+        "description": "Accelerated learning for high-achieving students"
+      },
+      {
+        "name": "College Prep",
+        "description": "Rigorous preparation for higher education"
+      },
+      {
+        "name": "Chromebook Program",
+        "description": "1:1 technology integration for modern learning"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Join the Spartan Family",
+    "description": "Discover how Immaculata High School can be the foundation for your child's bright future.",
+    "director": "Mrs. Michele Blandino",
+    "testimonials": [
+      {
+        "text": "Immaculata gave me the foundation I needed not just academically, but spiritually and socially. The teachers truly care about each student's success.",
+        "author": "Sarah M., Class of 2023",
+        "college": "Rutgers University"
+      },
+      {
+        "text": "The sense of community at Immaculata is unmatched. I made lifelong friendships and learned values that guide me every day.",
+        "author": "Michael R., Class of 2022",
+        "college": "Villanova University"
+      },
+      {
+        "text": "The college preparation program helped me get into my dream school. The guidance counselors were incredible throughout the process.",
+        "author": "Emma L., Class of 2024",
+        "college": "Georgetown University"
+      }
+    ],
+    "process": {
+      "steps": [
+        "Submit online application",
+        "Schedule entrance exam",
+        "Attend student interview",
+        "Submit transcripts and recommendations",
+        "Receive admission decision"
+      ]
+    }
+  },
+  "athletics": {
+    "title": "Spartan Athletics",
+    "description": "Building champions on and off the field through dedication, teamwork, and Spartan pride.",
+    "director": "Mr. Thomas Gambino",
+    "sports": [
+      {"name": "Football", "season": "Fall", "achievements": "Multiple conference titles"},
+      {"name": "Wrestling", "season": "Winter", "achievements": "2026 Somerset County Champions"},
+      {"name": "Basketball (Boys)", "season": "Winter", "achievements": "Regional finalists"},
+      {"name": "Basketball (Girls)", "season": "Winter", "achievements": "Conference champions"},
+      {"name": "Soccer (Boys)", "season": "Fall", "achievements": "State tournament participants"},
+      {"name": "Soccer (Girls)", "season": "Fall", "achievements": "League champions"},
+      {"name": "Volleyball", "season": "Fall", "achievements": "Conference all-stars"},
+      {"name": "Baseball", "season": "Spring", "achievements": "District champions"},
+      {"name": "Softball", "season": "Spring", "achievements": "Regional qualifiers"},
+      {"name": "Track & Field", "season": "Spring", "achievements": "State qualifiers"},
+      {"name": "Cross Country", "season": "Fall", "achievements": "Conference finalists"},
+      {"name": "Tennis", "season": "Spring", "achievements": "Individual state champions"},
+      {"name": "Golf", "season": "Fall/Spring", "achievements": "Tournament winners"},
+      {"name": "Cheerleading", "season": "Year-round", "achievements": "2026 Garden State Champions"},
+      {"name": "Swimming", "season": "Winter", "achievements": "Record holders"}
+    ]
+  },
+  "faculty": {
+    "spotlight": {
+      "name": "Mrs. Kristin Camiolo",
+      "title": "Mathematics Teacher",
+      "achievement": "2026 Lux Dei Award Recipient",
+      "description": "Dedicated educator with over 15 years of experience inspiring students in mathematics and fostering academic excellence."
+    }
+  },
+  "events": [
+    {
+      "title": "Open House",
+      "date": "March 15, 2026",
+      "time": "1:00 PM - 3:00 PM",
+      "location": "Main Campus",
+      "description": "Tour our campus and meet our faculty and students"
+    },
+    {
+      "title": "Spring Sports Registration",
+      "date": "March 25, 2026",
+      "time": "7:00 PM - 9:00 PM",
+      "location": "Athletic Office",
+      "description": "Register for spring sports programs and meet coaches"
+    },
+    {
+      "title": "Spring Sports Banquet",
+      "date": "April 20, 2026",
+      "time": "6:00 PM",
+      "location": "School Gymnasium",
+      "description": "Celebrating our student athletes' achievements"
+    },
+    {
+      "title": "Academic Awards Night",
+      "date": "May 15, 2026",
+      "time": "7:00 PM",
+      "location": "Auditorium",
+      "description": "Recognizing academic excellence and scholarship recipients"
+    },
+    {
+      "title": "Graduation Ceremony",
+      "date": "June 8, 2026",
+      "time": "10:00 AM",
+      "location": "School Grounds",
+      "description": "Celebrating the Class of 2026"
+    }
+  ],
+  "socialLinks": {
+    "facebook": "https://facebook.com/immaculatahighschool",
+    "instagram": "https://instagram.com/immaculatahighschool",
+    "twitter": "https://twitter.com/immaculatanj"
+  },
+  "contact": {
+    "hours": "Monday - Friday: 7:30 AM - 3:30 PM",
+    "principalMessage": "Welcome to Immaculata High School, where we are committed to developing the whole person - mind, body, and spirit. Our dedicated faculty and staff work tirelessly to provide an environment where students can grow academically, spiritually, and socially.",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.123456789!2d-74.12345!3d40.12345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sImmaculata%20High%20School!5e0!3m2!1sen!2sus!4v1234567890"
+  },
+  "footer": {
+    "socialMedia": [
+      {"platform": "Facebook", "url": "https://facebook.com/immaculatahighschool", "icon": "fab fa-facebook-f"},
+      {"platform": "Twitter", "url": "https://twitter.com/immaculatanj", "icon": "fab fa-twitter"},
+      {"platform": "Instagram", "url": "https://instagram.com/immaculatahighschool", "icon": "fab fa-instagram"},
+      {"platform": "YouTube", "url": "https://youtube.com/immaculatahighschool", "icon": "fab fa-youtube"}
+    ],
+    "quickLinks": [
+      {"text": "Apply Now", "href": "#admissions"},
+      {"text": "Schedule Visit", "href": "#contact"},
+      {"text": "Parent Portal", "href": "#"},
+      {"text": "Student Portal", "href": "#"},
+      {"text": "Faculty Directory", "href": "#"},
+      {"text": "Calendar", "href": "#"}
+    ]
+  }
+}
