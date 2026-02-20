@@ -15,7 +15,7 @@
         :root {
             --primary-navy: #0a1628;
             --secondary-navy: #142744;
-            --accent-gold: #c9a84c;
+            --accent-gold: #b89a3e;
             --accent-gold-light: #dfc477;
             --accent-gold-dark: #a68a3a;
             --bg-cream: #f8f6f1;
@@ -375,11 +375,11 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 700;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
             margin-bottom: 1.25rem;
             color: var(--text-dark);
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         .section.bg-navy .section-title,
@@ -395,8 +395,8 @@
         }
 
         .section-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.9;
             color: var(--text-body);
         }
 
@@ -435,8 +435,8 @@
         }
 
         .pillar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(10, 22, 40, 0.15);
         }
 
         .pillar-icon {
@@ -545,8 +545,8 @@
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(10, 22, 40, 0.12);
         }
 
         .card-image-wrap {
@@ -767,7 +767,7 @@
         .testimonial-card {
             background: var(--bg-white);
             border-radius: var(--radius-md);
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-light);
             position: relative;
@@ -1160,6 +1160,17 @@
             .why-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* ── ACCESSIBILITY ── */
+        .nav-links a:focus,
+        .btn:focus,
+        .apply-btn:focus,
+        .sport-card:focus,
+        a:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
         /* ── ANIMATIONS ── */
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -1233,7 +1244,7 @@
     </div>
 
     <!-- NAVIGATION -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-content">
             <a href="#home" class="nav-brand">
                 <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Templates/Resources/IHS%20Seal.png" alt="IHS Seal" class="nav-logo">
@@ -1427,7 +1438,7 @@
             <div class="news-grid animate-on-scroll">
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-16-26%20v2.png" alt="Wrestling Championship" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-16-26%20v2.png" alt="Wrestling Championship" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">February 17, 2026</div>
@@ -1439,7 +1450,7 @@
                 
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-9.png" alt="Lux Dei Award" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%202-9.png" alt="Lux Dei Award" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">February 10, 2026</div>
@@ -1451,7 +1462,7 @@
                 
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/IMG_6255.png" alt="Football Leadership" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/IMG_6255.png" alt="Football Leadership" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">February 5, 2026</div>
@@ -1463,7 +1474,7 @@
                 
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Athletics/Teams/Baseball/Jack%20Cust%20Jr..png" alt="Jack Cust Jr" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Athletics/Teams/Baseball/Jack%20Cust%20Jr..png" alt="Jack Cust Jr" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">January 28, 2026</div>
@@ -1475,7 +1486,7 @@
                 
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-19.png" alt="County Wrestling" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-19.png" alt="County Wrestling" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">January 19, 2026</div>
@@ -1487,7 +1498,7 @@
                 
                 <div class="card">
                     <div class="card-image-wrap">
-                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-12.png" alt="Cheer Champions" class="card-image">
+                        <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/News/2025-2026/LataHighlightOftheWeek%201-12.png" alt="Cheer Champions" class="card-image" loading="lazy">
                     </div>
                     <div class="card-content">
                         <div class="card-date">January 12, 2026</div>
@@ -1638,42 +1649,42 @@
             
             <div class="gallery-grid animate-on-scroll">
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/01_Service.jpg" alt="Community Service" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/01_Service.jpg" alt="Community Service" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Community Service</h3>
                         <p>Living our faith through service to others.</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/Fall%202019/Chapel%20Photo.JPG" alt="Chapel" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/Fall%202019/Chapel%20Photo.JPG" alt="Chapel" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Spiritual Growth</h3>
                         <p>Our chapel — the heart of our faith community.</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/2020_2021/Graduation2021a.jpg" alt="Graduation" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Banner/2020_2021/Graduation2021a.jpg" alt="Graduation" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Graduation Day</h3>
                         <p>Celebrating growth, achievement, and friendship.</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/24-25/Fast_Facts_Slides_08_Theater.jpg" alt="Theater Program" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/24-25/Fast_Facts_Slides_08_Theater.jpg" alt="Theater Program" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Arts & Theater</h3>
                         <p>Creativity and confidence through performing arts.</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/12_Marching_Band.jpg" alt="Marching Band" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/12_Marching_Band.jpg" alt="Marching Band" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Marching Band</h3>
                         <p>Musical excellence and school spirit.</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/03_Baseball.jpg" alt="Baseball" class="gallery-image">
+                    <img src="https://cdnsm5-ss19.sharpschool.com/UserFiles/Servers/Server_95331/Image/Home%20Page/Fast%20Facts/25-26/03_Baseball.jpg" alt="Baseball" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Athletic Excellence</h3>
                         <p>Competing with pride in the Spartan tradition.</p>
